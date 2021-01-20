@@ -1,4 +1,4 @@
-#Weather App
+# Weather App
 
 Project to compare weather in two different cities
 
