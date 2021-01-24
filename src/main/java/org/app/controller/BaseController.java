@@ -1,18 +1,18 @@
 package org.app.controller;
 
-import org.app.ViewFactory;
-import org.app.WeatherManager;
+import org.app.view.ViewFactory;
 
 public abstract class BaseController {
 
-    private WeatherManager weatherManager;
-    private ViewFactory viewFactory;
+    protected ViewFactory viewFactory;
     private String fxmlName;
 
-    public BaseController(WeatherManager weatherManager, ViewFactory viewFactory, String fxmlName) {
-        this.weatherManager = weatherManager;
+    public BaseController(ViewFactory viewFactory, String fxmlName) {
         this.viewFactory = viewFactory;
         this.fxmlName = fxmlName;
     }
 
+    public String getFxmlName() {
+        return fxmlName;
+    }
 }
