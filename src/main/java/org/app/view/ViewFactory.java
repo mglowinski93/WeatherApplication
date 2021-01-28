@@ -12,7 +12,7 @@ import java.io.IOException;
 public class ViewFactory {
 
     public void showMainWindow() throws IOException {
-        BaseController controller = new MainWindowController(this, "../MainWindow.fxml");
+        BaseController controller = new MainWindowController(this, "../windows/MainWindow.fxml");
         this.initializeStage(controller);
     }
 

@@ -3,9 +3,11 @@ package org.app.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import org.app.controller.services.WeatherService;
-import org.app.model.Weather;
+import org.app.controller.services.GetWeatherService;
+import org.app.model.Date;
 import org.app.view.ViewFactory;
+
+import java.util.Map;
 
 public class MainWindowController extends BaseController{
 
@@ -17,12 +19,17 @@ public class MainWindowController extends BaseController{
 
     @FXML
     public void onSearch(){
-        WeatherService weatherService = new WeatherService();
-        weatherService.setCityName(fieldSearch.getText());
+        GetWeatherService weatherService = new GetWeatherService(fieldSearch.getText());
         weatherService.start();
         weatherService.setOnSucceeded(event -> {
-            Weather weather = weatherService.getValue();
-            labelInfo.setText(weather.getCityName() + ": " + weather.getTemp());
+            Map<Integer, String> weatherTempForcast = weatherService.getValue();
+            Date date = new Date();
+
+            for (Map.Entry<Integer, String> entry : weatherTempForcast.entrySet()) {
+                System.out.println(date.getDateFromUTC(entry.getKey()) + "/" + entry.getValue());
+            }
+
+            //labelInfo.setText(date.getDateFromUTC(weatherTempForcast.keySet());
         });
 
     }
