@@ -1,7 +1,7 @@
 package org.app;
 
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
 import java.util.Properties;
 
 
@@ -16,18 +16,18 @@ public final class PropertiesReader {
 
     static {
         PROPERTIES = new Properties();
-        final URL props = ClassLoader.getSystemResource(PROP_FILE);
+
+        InputStream input = PropertiesReader.class.getClassLoader().getResourceAsStream(PROP_FILE);
+
         try {
-            System.out.println("Reading Data");
-            PROPERTIES.load(props.openStream());
-            System.out.println("After Reading Data");
-        } catch (IOException ex) {
-            ex.printStackTrace();
+            PROPERTIES.load(input);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
     }
 
     public static String getProperty(final String name) {
-        System.out.println(PROPERTIES.getProperty(name));
         return PROPERTIES.getProperty(name);
     }
 }
