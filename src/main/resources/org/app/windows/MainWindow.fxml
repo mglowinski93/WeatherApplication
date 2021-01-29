@@ -1,17 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="236.0" prefWidth="443.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
-             <TextField fx:id="fieldSearch" onAction="#onSearch" prefHeight="25.0" prefWidth="296.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-             <Label fx:id="labelInfo" layoutY="35.0" prefHeight="17.0" prefWidth="87.0" />
+            <BorderPane layoutX="7.0" layoutY="35.0" prefHeight="398.0" prefWidth="296.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                   <TextField fx:id="currentSearchField" onAction="#currentLocationOnSearch" prefHeight="25.0" prefWidth="296.0" promptText="Current Location" BorderPane.alignment="CENTER" />
+               </top>
+               <left>
+                  <VBox fx:id="currentDatesVBox" prefHeight="209.0" prefWidth="115.0" spacing="25.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="currentLocationDate0" />
+                        <Label fx:id="currentLocationDate1" />
+                        <Label fx:id="currentLocationDate2" />
+                        <Label fx:id="currentLocationDate4" />
+                        <Label fx:id="currentLocationDate5" />
+                     </children>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </left>
+               <center>
+                  <VBox fx:id="currentTempsVBox" prefHeight="200.0" prefWidth="100.0" spacing="25.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="currentLocationTemp0" />
+                        <Label fx:id="currentLocationTemp1" />
+                        <Label fx:id="currentLocationTemp2" />
+                        <Label fx:id="currentLocationTemp3" />
+                        <Label fx:id="currentLocationTemp4" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </center>
+            </BorderPane>
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <BorderPane layoutX="14.0" layoutY="25.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <TextField fx:id="destinationSearchField" onAction="#destinationLocationOnSearch" prefHeight="25.0" prefWidth="296.0" promptText="Destination Location" BorderPane.alignment="CENTER" />
+               </top>
+               <left>
+                  <VBox fx:id="destinationDatesVBox" prefHeight="209.0" prefWidth="115.0" spacing="25.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="destinationLocationDate0" />
+                        <Label fx:id="destinationLocationDate1" />
+                        <Label fx:id="destinationLocationDate2" />
+                        <Label fx:id="destinationLocationDate3" />
+                        <Label fx:id="destinationLocationDate4" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </left>
+               <center>
+                  <VBox fx:id="destinationTempsVBox" prefHeight="200.0" prefWidth="100.0" spacing="25.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="destinationLocationTemp0" />
+                        <Label fx:id="destinationLocationTemp1" />
+                        <Label fx:id="destinationLocationTemp2" />
+                        <Label fx:id="destinationLocationTemp3" />
+                        <Label fx:id="destinationLocationTemp4" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </center>
+            </BorderPane>
+         </children></AnchorPane>
   </items>
 </SplitPane>
