@@ -25,7 +25,7 @@
                         <HBox fx:id="currentDataHBox0" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <ImageView fx:id="currentImage0" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox fx:id="currentDataLabelVBox0" prefHeight="200.0" prefWidth="100.0">
+                              <VBox fx:id="currentDataLabelVBox0" prefHeight="150.0" prefWidth="143.0">
                                  <children>
                                     <Label fx:id="currentLocationDate0">
                                        <font>
@@ -44,7 +44,7 @@
                         <HBox fx:id="currentDataHBox1" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <ImageView fx:id="currentImage1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox fx:id="currentDataLabelVBox1" prefHeight="200.0" prefWidth="100.0">
+                              <VBox fx:id="currentDataLabelVBox1" prefHeight="150.0" prefWidth="143.0">
                                  <children>
                                     <Label fx:id="currentLocationDate1">
                                        <font>
@@ -63,7 +63,7 @@
                         <HBox fx:id="currentDataHBox2" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <ImageView fx:id="currentImage2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox fx:id="currentDataLabelVBox2" prefHeight="200.0" prefWidth="100.0">
+                              <VBox fx:id="currentDataLabelVBox2" prefHeight="150.0" prefWidth="143.0">
                                  <children>
                                     <Label fx:id="currentLocationDate2">
                                        <font>
@@ -82,7 +82,7 @@
                         <HBox fx:id="currentDataHBox3" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <ImageView fx:id="currentImage3" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox fx:id="currentDataLabelVBox3" prefHeight="200.0" prefWidth="100.0">
+                              <VBox fx:id="currentDataLabelVBox3" prefHeight="150.0" prefWidth="143.0">
                                  <children>
                                     <Label fx:id="currentLocationDate3">
                                        <font>
@@ -101,7 +101,7 @@
                         <HBox fx:id="currentDataHBox4" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <ImageView fx:id="currentImage4" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox fx:id="currentDataLabelVBox4" prefHeight="200.0" prefWidth="100.0">
+                              <VBox fx:id="currentDataLabelVBox4" prefHeight="150.0" prefWidth="143.0">
                                  <children>
                                     <Label fx:id="currentLocationDate4">
                                        <font>
@@ -140,7 +140,7 @@
                         <HBox fx:id="destinationDataHBox0" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <ImageView fx:id="destinationImage0" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox fx:id="destinationDataLabelVBox0" prefHeight="200.0" prefWidth="100.0">
+                              <VBox fx:id="destinationDataLabelVBox0" prefHeight="150.0" prefWidth="143.0">
                                  <children>
                                     <Label fx:id="destinationLocationDate0">
                                        <font>
@@ -159,7 +159,7 @@
                         <HBox fx:id="destinationDataHBox1" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <ImageView fx:id="destinationImage1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox fx:id="destinationDataLabelVBox1" prefHeight="200.0" prefWidth="100.0">
+                              <VBox fx:id="destinationDataLabelVBox1" prefHeight="150.0" prefWidth="143.0">
                                  <children>
                                     <Label fx:id="destinationLocationDate1">
                                        <font>
@@ -178,7 +178,7 @@
                         <HBox fx:id="destinationDataHBox2" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <ImageView fx:id="destinationImage2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox fx:id="destinationDataLabelVBox2" prefHeight="200.0" prefWidth="100.0">
+                              <VBox fx:id="destinationDataLabelVBox2" prefHeight="150.0" prefWidth="143.0">
                                  <children>
                                     <Label fx:id="destinationLocationDate2">
                                        <font>
@@ -197,7 +197,7 @@
                         <HBox fx:id="destinationDataHBox3" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <ImageView fx:id="destinationImage3" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox fx:id="destinationDataLabelVBox3" prefHeight="200.0" prefWidth="100.0">
+                              <VBox fx:id="destinationDataLabelVBox3" prefHeight="150.0" prefWidth="143.0">
                                  <children>
                                     <Label fx:id="destinationLocationDate3">
                                        <font>
@@ -216,7 +216,7 @@
                         <HBox fx:id="destinationDataHBox4" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <ImageView fx:id="destinationImage4" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox fx:id="destinationDataLabelVBox4" prefHeight="200.0" prefWidth="100.0">
+                              <VBox fx:id="destinationDataLabelVBox4" prefHeight="150.0" prefWidth="143.0">
                                  <children>
                                     <Label fx:id="destinationLocationDate4">
                                        <font>
