@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Map;
 
 
-public class GetWeatherService extends Service<Map<Integer, String>> {
+public class GetWeatherService extends Service<Map<Integer, String[]>> {
 
     final String cityName;
     final int forcastDays;
@@ -18,17 +18,17 @@ public class GetWeatherService extends Service<Map<Integer, String>> {
         this.forcastDays = forcastDays;
     }
 
-    private Map<Integer, String> getWeatherData() throws IOException {
+    private Map<Integer, String[]> getWeatherData() throws IOException {
 
         return new Weather(cityName).getWeatherTempForcast(this.forcastDays);
 
     }
 
     @Override
-    protected Task<Map<Integer, String>> createTask() {
+    protected Task<Map<Integer, String[]>> createTask() {
         return new Task<>() {
             @Override
-            protected Map<Integer, String> call() throws Exception {
+            protected Map<Integer, String[]> call() throws Exception {
                 return getWeatherData();
             }
         };
