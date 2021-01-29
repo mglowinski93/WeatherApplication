@@ -22,6 +22,7 @@ public class ViewFactory {
         Parent root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Weather App");
         stage.show();
     }
 

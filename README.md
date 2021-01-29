@@ -2,6 +2,9 @@
 
 Project to compare weather in two different cities
 
+
+![picture](Application_UI.png)
+
 ### **Installation**
 > 1) mvn clean install
 > 2) mvn exec:java

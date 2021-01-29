@@ -4,11 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="236.0" prefWidth="443.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="894.0" prefWidth="715.0" style="-fx-background-color: #d9e3ff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
@@ -16,32 +19,108 @@
                <top>
                    <TextField fx:id="currentSearchField" onAction="#currentLocationOnSearch" prefHeight="25.0" prefWidth="296.0" promptText="Current Location" BorderPane.alignment="CENTER" />
                </top>
-               <left>
-                  <VBox fx:id="currentDatesVBox" prefHeight="209.0" prefWidth="115.0" spacing="25.0" BorderPane.alignment="CENTER">
+               <center>
+                  <VBox fx:id="currentDataVBox" prefHeight="209.0" prefWidth="115.0" spacing="25.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="currentLocationDate0" />
-                        <Label fx:id="currentLocationDate1" />
-                        <Label fx:id="currentLocationDate2" />
-                        <Label fx:id="currentLocationDate4" />
-                        <Label fx:id="currentLocationDate5" />
+                        <HBox fx:id="currentDataHBox0" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="currentImage0" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                              <VBox fx:id="currentDataLabelVBox0" prefHeight="150.0" prefWidth="143.0">
+                                 <children>
+                                    <Label fx:id="currentLocationDate0">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="currentLocationTemp0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="currentDataHBox1" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="currentImage1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                              <VBox fx:id="currentDataLabelVBox1" prefHeight="150.0" prefWidth="143.0">
+                                 <children>
+                                    <Label fx:id="currentLocationDate1">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="currentLocationTemp1">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="currentDataHBox2" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="currentImage2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                              <VBox fx:id="currentDataLabelVBox2" prefHeight="150.0" prefWidth="143.0">
+                                 <children>
+                                    <Label fx:id="currentLocationDate2">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="currentLocationTemp2">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="currentDataHBox3" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="currentImage3" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                              <VBox fx:id="currentDataLabelVBox3" prefHeight="150.0" prefWidth="143.0">
+                                 <children>
+                                    <Label fx:id="currentLocationDate3">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="currentLocationTemp3">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="currentDataHBox4" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="currentImage4" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                              <VBox fx:id="currentDataLabelVBox4" prefHeight="150.0" prefWidth="143.0">
+                                 <children>
+                                    <Label fx:id="currentLocationDate4">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="currentLocationTemp4">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
                      </children>
                      <BorderPane.margin>
                         <Insets />
                      </BorderPane.margin>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </VBox>
-               </left>
-               <center>
-                  <VBox fx:id="currentTempsVBox" prefHeight="200.0" prefWidth="100.0" spacing="25.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Label fx:id="currentLocationTemp0" />
-                        <Label fx:id="currentLocationTemp1" />
-                        <Label fx:id="currentLocationTemp2" />
-                        <Label fx:id="currentLocationTemp3" />
-                        <Label fx:id="currentLocationTemp4" />
-                     </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
@@ -55,28 +134,104 @@
                <top>
                   <TextField fx:id="destinationSearchField" onAction="#destinationLocationOnSearch" prefHeight="25.0" prefWidth="296.0" promptText="Destination Location" BorderPane.alignment="CENTER" />
                </top>
-               <left>
-                  <VBox fx:id="destinationDatesVBox" prefHeight="209.0" prefWidth="115.0" spacing="25.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Label fx:id="destinationLocationDate0" />
-                        <Label fx:id="destinationLocationDate1" />
-                        <Label fx:id="destinationLocationDate2" />
-                        <Label fx:id="destinationLocationDate3" />
-                        <Label fx:id="destinationLocationDate4" />
-                     </children>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </VBox>
-               </left>
                <center>
-                  <VBox fx:id="destinationTempsVBox" prefHeight="200.0" prefWidth="100.0" spacing="25.0" BorderPane.alignment="CENTER">
+                  <VBox fx:id="destinationDataVBox" prefHeight="209.0" prefWidth="115.0" spacing="25.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="destinationLocationTemp0" />
-                        <Label fx:id="destinationLocationTemp1" />
-                        <Label fx:id="destinationLocationTemp2" />
-                        <Label fx:id="destinationLocationTemp3" />
-                        <Label fx:id="destinationLocationTemp4" />
+                        <HBox fx:id="destinationDataHBox0" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="destinationImage0" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                              <VBox fx:id="destinationDataLabelVBox0" prefHeight="150.0" prefWidth="143.0">
+                                 <children>
+                                    <Label fx:id="destinationLocationDate0">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="destinationLocationTemp0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="destinationDataHBox1" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="destinationImage1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                              <VBox fx:id="destinationDataLabelVBox1" prefHeight="150.0" prefWidth="143.0">
+                                 <children>
+                                    <Label fx:id="destinationLocationDate1">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="destinationLocationTemp1">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="destinationDataHBox2" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="destinationImage2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                              <VBox fx:id="destinationDataLabelVBox2" prefHeight="150.0" prefWidth="143.0">
+                                 <children>
+                                    <Label fx:id="destinationLocationDate2">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="destinationLocationTemp2">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="destinationDataHBox3" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="destinationImage3" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                              <VBox fx:id="destinationDataLabelVBox3" prefHeight="150.0" prefWidth="143.0">
+                                 <children>
+                                    <Label fx:id="destinationLocationDate3">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="destinationLocationTemp3">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="destinationDataHBox4" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="destinationImage4" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                              <VBox fx:id="destinationDataLabelVBox4" prefHeight="150.0" prefWidth="143.0">
+                                 <children>
+                                    <Label fx:id="destinationLocationDate4">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="destinationLocationTemp4">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

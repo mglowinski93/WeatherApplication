@@ -25,11 +25,7 @@ public class Weather {
         this.lon = jsonData.get("coord").get("lon").toString();
     }
 
-    public String getCityName() {
-        return cityName;
-    }
-
-    public Map<Integer, String> getWeatherTempForcast(int forcastDays) throws IOException {
+    public Map<Integer, String[]> getWeatherTempForcast(int forcastDays) throws IOException {
         if (forcastDays > 7) forcastDays = 7;
         else if (forcastDays < 0) forcastDays = 0;
 
@@ -38,12 +34,14 @@ public class Weather {
                 new ObjectMapper().readTree(new URL("https://api.openweathermap.org/data/2.5/onecall?lat="+ this.lat +
                 "&lon="+ this.lon +"&exclude=minutely,hourly&appid=" + PropertiesReader.getProperty("OPEN_WEATHER_API_KEY") + "&units=metric"));
 
-        Map<Integer, String> weatherTempForcast = new HashMap<>();
+        Map<Integer, String[]> weatherTempForcast = new HashMap<>();
 
         for(int i = 0; i < forcastDays; i++)
         {
-            weatherTempForcast.put(Integer.parseInt(weaterJsonData.get("daily").get(i).get("dt").asText()),
-                    weaterJsonData.get("daily").get(i).get("temp").get("day").asText());
+            String data[] = new String[]{weaterJsonData.get("daily").get(i).get("temp").get("day").asText(),
+                    weaterJsonData.get("daily").get(i).get("weather").get(0).get("icon").asText()};
+
+            weatherTempForcast.put(Integer.parseInt(weaterJsonData.get("daily").get(i).get("dt").asText()), data);
         }
 
        return weatherTempForcast;
