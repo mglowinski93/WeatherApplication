@@ -11,10 +11,9 @@ import org.app.controller.services.GetWeatherService;
 import org.app.model.Date;
 import org.app.view.ViewFactory;
 
-import java.util.Iterator;
 import java.util.Map;
 
-public class MainWindowController extends BaseController{
+public class MainWindowController extends BaseController {
 
     @FXML
     private TextField currentSearchField, destinationSearchField;
@@ -23,20 +22,24 @@ public class MainWindowController extends BaseController{
     private VBox currentDataVBox, destinationDataVBox;
 
     @FXML
-    public void currentLocationOnSearch(){
+    public void currentLocationOnSearch() {
 
-        this.startGetWeatherService(currentSearchField, currentDataVBox);
+        startGetWeatherService(currentSearchField, currentDataVBox);
     }
 
     @FXML
-    public void destinationLocationOnSearch(){
+    public void destinationLocationOnSearch() {
 
-        this.startGetWeatherService(destinationSearchField, destinationDataVBox);
+        startGetWeatherService(destinationSearchField, destinationDataVBox);
     }
 
-    private void clearLabelsInsideVBox(VBox vBox){
+    public MainWindowController(ViewFactory viewFactory, String fxmlName) {
+        super(viewFactory, fxmlName);
+    }
 
-        for(int i = 0; i < vBox.getChildren().size(); i++) {
+    private void clearLabelsInsideVBox(VBox vBox) {
+
+        for (int i = 0; i < vBox.getChildren().size(); i++) {
 
             HBox dataHBox = (HBox) vBox.getChildren().get(i);
             ImageView imageView = (ImageView) dataHBox.getChildren().get(0);
@@ -52,21 +55,18 @@ public class MainWindowController extends BaseController{
 
     }
 
-    private void startGetWeatherService(TextField searchField, VBox dataVBox){
+    private void startGetWeatherService(TextField searchField, VBox dataVBox) {
         GetWeatherService weatherService = new GetWeatherService(searchField.getText(), dataVBox.getChildren().size());
         weatherService.restart();
 
-        this.clearLabelsInsideVBox(dataVBox);
+        clearLabelsInsideVBox(dataVBox);
 
         weatherService.setOnSucceeded(event -> {
-            Map<Integer, String[]> weatherTempForcast = weatherService.getValue();
+            Map<Integer, String[]> weatherTempForecast = weatherService.getValue();
             Date date = new Date();
 
             int i = 0;
-            Iterator<Map.Entry<Integer, String[]>> it = weatherTempForcast.entrySet().iterator();
-            while (it.hasNext()) {
-                Map.Entry<Integer, String[]> pair = it.next();
-
+            for (Map.Entry<Integer, String[]> pair : weatherTempForecast.entrySet()) {
                 HBox dataHBox = (HBox) dataVBox.getChildren().get(i);
                 ImageView imageView = (ImageView) dataHBox.getChildren().get(0);
 
@@ -85,9 +85,5 @@ public class MainWindowController extends BaseController{
                 i++;
             }
         });
-    }
-
-    public MainWindowController(ViewFactory viewFactory, String fxmlName){
-        super(viewFactory, fxmlName);
     }
 }
