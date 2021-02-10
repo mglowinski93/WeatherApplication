@@ -3,6 +3,7 @@ package org.app.controller.services;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import org.app.model.Weather;
+
 import java.io.IOException;
 
 import java.util.Map;
@@ -10,17 +11,17 @@ import java.util.Map;
 
 public class GetWeatherService extends Service<Map<Integer, String[]>> {
 
-    final String cityName;
-    final int forcastDays;
+    private String cityName;
+    private int forecastDays;
 
-    public GetWeatherService(String cityName, int forcastDays) {
+    public GetWeatherService(String cityName, int forecastDays) {
         this.cityName = cityName;
-        this.forcastDays = forcastDays;
+        this.forecastDays = forecastDays;
     }
 
     private Map<Integer, String[]> getWeatherData() throws IOException {
 
-        return new Weather(cityName).getWeatherTempForcast(this.forcastDays);
+        return new Weather(cityName).getWeatherTempForecast(forecastDays);
 
     }
 
