@@ -86,5 +86,10 @@ public class MainWindowController extends BaseController {
                 i++;
             }
         });
+
+        weatherService.setOnFailed(event -> {
+            clearLabelsInsideVBox(dataVBox);
+            weatherService.getException().printStackTrace();
+        });
     }
 }
