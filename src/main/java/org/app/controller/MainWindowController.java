@@ -15,9 +15,9 @@ import java.util.Map;
 
 public class MainWindowController extends BaseController {
 
+    private final GetWeatherService weatherService = new GetWeatherService();
     @FXML
     private TextField currentSearchField, destinationSearchField;
-
     @FXML
     private VBox currentDataVBox, destinationDataVBox;
 
@@ -56,7 +56,8 @@ public class MainWindowController extends BaseController {
     }
 
     private void startGetWeatherService(TextField searchField, VBox dataVBox) {
-        GetWeatherService weatherService = new GetWeatherService(searchField.getText(), dataVBox.getChildren().size());
+        weatherService.setCityName(searchField.getText());
+        weatherService.setForecastDays(dataVBox.getChildren().size());
         weatherService.restart();
 
         clearLabelsInsideVBox(dataVBox);

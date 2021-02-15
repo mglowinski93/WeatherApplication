@@ -10,11 +10,14 @@ import java.util.Map;
 
 public class GetWeatherService extends Service<Map<Integer, String[]>> {
 
-    private final String cityName;
-    private final int forecastDays;
+    private String cityName;
+    private int forecastDays;
 
-    public GetWeatherService(String cityName, int forecastDays) {
+    public void setCityName(String cityName) {
         this.cityName = cityName;
+    }
+
+    public void setForecastDays(int forecastDays) {
         this.forecastDays = forecastDays;
     }
 
