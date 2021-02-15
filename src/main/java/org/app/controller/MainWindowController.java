@@ -21,6 +21,10 @@ public class MainWindowController extends BaseController {
     @FXML
     private VBox currentDataVBox, destinationDataVBox;
 
+    public MainWindowController(ViewFactory viewFactory, String fxmlName) {
+        super(viewFactory, fxmlName);
+    }
+
     @FXML
     public void currentLocationOnSearch() {
 
@@ -31,10 +35,6 @@ public class MainWindowController extends BaseController {
     public void destinationLocationOnSearch() {
 
         startGetWeatherService(destinationSearchField, destinationDataVBox);
-    }
-
-    public MainWindowController(ViewFactory viewFactory, String fxmlName) {
-        super(viewFactory, fxmlName);
     }
 
     private void clearLabelsInsideVBox(VBox vBox) {
