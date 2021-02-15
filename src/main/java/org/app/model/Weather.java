@@ -39,7 +39,7 @@ public class Weather {
         Map<Integer, String[]> weatherTempForecast = new HashMap<>();
 
         for (int i = 0; i < forecastDays; i++) {
-            String data[] = new String[]{weaterJsonData.get("daily").get(i).get("temp").get("day").asText(),
+            String[] data = new String[]{weaterJsonData.get("daily").get(i).get("temp").get("day").asText(),
                     weaterJsonData.get("daily").get(i).get("weather").get(0).get("icon").asText()};
 
             weatherTempForecast.put(Integer.parseInt(weaterJsonData.get("daily").get(i).get("dt").asText()), data);

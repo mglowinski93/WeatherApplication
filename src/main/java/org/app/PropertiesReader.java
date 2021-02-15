@@ -11,9 +11,6 @@ public final class PropertiesReader {
 
     private static final String PROP_FILE = "apikey.properties";
 
-    private PropertiesReader() {
-    }
-
     static {
         PROPERTIES = new Properties();
 
@@ -25,6 +22,9 @@ public final class PropertiesReader {
             e.printStackTrace();
         }
 
+    }
+
+    private PropertiesReader() {
     }
 
     public static String getProperty(final String name) {

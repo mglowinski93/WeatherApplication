@@ -5,14 +5,13 @@ import javafx.concurrent.Task;
 import org.app.model.Weather;
 
 import java.io.IOException;
-
 import java.util.Map;
 
 
 public class GetWeatherService extends Service<Map<Integer, String[]>> {
 
-    private String cityName;
-    private int forecastDays;
+    private final String cityName;
+    private final int forecastDays;
 
     public GetWeatherService(String cityName, int forecastDays) {
         this.cityName = cityName;
