@@ -2,7 +2,7 @@ package org.app.controller.services;
 
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
-import org.app.model.Weather;
+import org.app.model.WeatherApiClient;
 
 import java.io.IOException;
 import java.util.Map;
@@ -10,8 +10,15 @@ import java.util.Map;
 
 public class GetWeatherService extends Service<Map<Integer, String[]>> {
 
+    private final WeatherApiClient weatherApiClient;
+    private final String apiKey;
     private String cityName;
     private int forecastDays;
+
+    public GetWeatherService(String apiKey) {
+        this.apiKey = apiKey;
+        weatherApiClient = new WeatherApiClient(this.apiKey);
+    }
 
     public String getCityName() {
         return cityName;
@@ -31,7 +38,7 @@ public class GetWeatherService extends Service<Map<Integer, String[]>> {
 
     private Map<Integer, String[]> getWeatherData() throws IOException {
 
-        return new Weather(cityName).getWeatherTempForecast(forecastDays);
+        return weatherApiClient.getWeatherTempForecast(cityName, forecastDays);
 
     }
 
