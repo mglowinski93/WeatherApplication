@@ -11,17 +11,17 @@ import java.util.Map;
 public class WeatherApiClient {
 
     static final ObjectMapper objectMapper = new ObjectMapper();
+    private final static int minForecastDays = 0;
+    private final static int maxForecastDays = 7;
     private final String apiKey;
-
     public WeatherApiClient(String apiKey) {
         this.apiKey = apiKey;
     }
 
-    public Map<Integer, String[]> getWeatherTempForecast(String cityName, int forecastDays) throws IOException {
-        if (forecastDays > 7) {
-            forecastDays = 7;
-        } else if (forecastDays < 0) {
-            forecastDays = 0;
+    public Map<Integer, String[]> getWeatherTempForecast(String cityName, int forecastDays) throws IOException, InvalidForecastDays {
+        if (minForecastDays < 0 || maxForecastDays > 7) {
+            throw new InvalidForecastDays(forecastDays + " is invalid number for forecast days. Please select number " +
+                    "between " + minForecastDays + " and " + maxForecastDays);
         }
 
         JsonNode weaterJsonData = requestWeatherData(cityName);
@@ -53,6 +53,24 @@ public class WeatherApiClient {
         }
 
         return weatherTempForecast;
+    }
+
+    public class InvalidForecastDays extends Exception {
+        public InvalidForecastDays() {
+            super();
+        }
+
+        public InvalidForecastDays(String message) {
+            super(message);
+        }
+
+        public InvalidForecastDays(String message, Throwable cause) {
+            super(message, cause);
+        }
+
+        public InvalidForecastDays(Throwable cause) {
+            super(cause);
+        }
     }
 
 }
