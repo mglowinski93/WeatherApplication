@@ -14,6 +14,7 @@ public class WeatherApiClient {
     private final static int minForecastDays = 0;
     private final static int maxForecastDays = 7;
     private final String apiKey;
+
     public WeatherApiClient(String apiKey) {
         this.apiKey = apiKey;
     }
@@ -27,6 +28,14 @@ public class WeatherApiClient {
         JsonNode weaterJsonData = requestWeatherData(cityName);
 
         return prepareWeatherData(weaterJsonData, forecastDays);
+    }
+
+    public class InvalidForecastDays extends Exception {
+
+        public InvalidForecastDays(String message) {
+            super(message);
+        }
+
     }
 
     private JsonNode requestWeatherData(String cityName) throws IOException {
@@ -46,31 +55,15 @@ public class WeatherApiClient {
         Map<Integer, String[]> weatherTempForecast = new HashMap<>();
 
         for (int i = 0; i < forecastDays; i++) {
-            String[] data = new String[]{weaterJsonData.get("daily").get(i).get("temp").get("day").asText(),
-                    weaterJsonData.get("daily").get(i).get("weather").get(0).get("icon").asText()};
+            String[] data = new String[]{
+                    weaterJsonData.get("daily").get(i).get("temp").get("day").asText(),
+                    weaterJsonData.get("daily").get(i).get("weather").get(0).get("icon").asText()
+            };
 
             weatherTempForecast.put(Integer.parseInt(weaterJsonData.get("daily").get(i).get("dt").asText()), data);
         }
 
         return weatherTempForecast;
-    }
-
-    public class InvalidForecastDays extends Exception {
-        public InvalidForecastDays() {
-            super();
-        }
-
-        public InvalidForecastDays(String message) {
-            super(message);
-        }
-
-        public InvalidForecastDays(String message, Throwable cause) {
-            super(message, cause);
-        }
-
-        public InvalidForecastDays(Throwable cause) {
-            super(cause);
-        }
     }
 
 }
