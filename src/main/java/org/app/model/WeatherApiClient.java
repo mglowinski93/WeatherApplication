@@ -23,16 +23,26 @@ public class WeatherApiClient {
         } else if (forecastDays < 0) {
             forecastDays = 0;
         }
+
+        JsonNode weaterJsonData = requestWeatherData(cityName);
+
+        return prepareWeatherData(weaterJsonData, forecastDays);
+    }
+
+    private JsonNode requestWeatherData(String cityName) throws IOException {
         JsonNode jsonData =
                 objectMapper.readTree(new URL("http://api.openweathermap.org/data/2.5/weather?q=" + cityName +
                         "&appid=" + apiKey + "&lang=en&units=metric"));
         String lat = jsonData.get("coord").get("lat").toString();
         String lon = jsonData.get("coord").get("lon").toString();
 
-        JsonNode weaterJsonData = objectMapper.readTree(new URL("https://api.openweathermap.org/data/2" +
+        return objectMapper.readTree(new URL("https://api.openweathermap.org/data/2" +
                 ".5/onecall?lat=" + lat +
                 "&lon=" + lon + "&exclude=minutely,hourly&appid=" + apiKey + "&units=metric"));
 
+    }
+
+    private Map<Integer, String[]> prepareWeatherData(JsonNode weaterJsonData, int forecastDays) {
         Map<Integer, String[]> weatherTempForecast = new HashMap<>();
 
         for (int i = 0; i < forecastDays; i++) {
