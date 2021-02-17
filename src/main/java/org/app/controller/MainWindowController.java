@@ -35,7 +35,7 @@ public class MainWindowController extends BaseController {
 
         if (openWeatherApiKey == null || openWeatherApiKey.isEmpty()) {
             closeApplicationWithErrorCode(PropertiesReader.PROP_FILE + " does not contain OPEN_WEATHER_API_KEY. " +
-                    "Please, add it and restart applicatio.n");
+                    "Please, add it and restart application.");
         }
 
         weatherService = new GetWeatherService(openWeatherApiKey);
