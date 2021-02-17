@@ -36,7 +36,7 @@ public class GetWeatherService extends Service<Map<Integer, String[]>> {
         this.forecastDays = forecastDays;
     }
 
-    private Map<Integer, String[]> getWeatherData() throws IOException {
+    private Map<Integer, String[]> getWeatherData() throws IOException, WeatherApiClient.InvalidForecastDays {
 
         return weatherApiClient.getWeatherTempForecast(cityName, forecastDays);
 
