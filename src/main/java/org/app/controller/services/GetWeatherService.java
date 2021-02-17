@@ -13,8 +13,16 @@ public class GetWeatherService extends Service<Map<Integer, String[]>> {
     private String cityName;
     private int forecastDays;
 
+    public String getCityName() {
+        return cityName;
+    }
+
     public void setCityName(String cityName) {
         this.cityName = cityName;
+    }
+
+    public int getForecastDays() {
+        return forecastDays;
     }
 
     public void setForecastDays(int forecastDays) {
