@@ -1,5 +1,6 @@
 package org.app.controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -7,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import org.app.PropertiesReader;
 import org.app.controller.services.GetWeatherService;
 import org.app.model.Date;
 import org.app.view.ViewFactory;
@@ -15,7 +17,8 @@ import java.util.Map;
 
 public class MainWindowController extends BaseController {
 
-    private final GetWeatherService weatherService = new GetWeatherService();
+    private final GetWeatherService weatherService;
+    private String openWeatherApiKey = null;
     @FXML
     private TextField currentSearchField, destinationSearchField;
     @FXML
@@ -23,6 +26,25 @@ public class MainWindowController extends BaseController {
 
     public MainWindowController(ViewFactory viewFactory, String fxmlName) {
         super(viewFactory, fxmlName);
+        try {
+            openWeatherApiKey = PropertiesReader.getProperty("OPEN_WEATHER_API_KEY");
+        } catch (ExceptionInInitializerError e) {
+            closeApplicationWithErrorCode(PropertiesReader.PROP_FILE + " does not exist. Please, create it and restart " +
+                    "application.");
+        }
+
+        if (openWeatherApiKey == null || openWeatherApiKey.isEmpty()) {
+            closeApplicationWithErrorCode(PropertiesReader.PROP_FILE + " does not contain OPEN_WEATHER_API_KEY. " +
+                    "Please, add it and restart applicatio.n");
+        }
+
+        weatherService = new GetWeatherService(openWeatherApiKey);
+    }
+
+    private void closeApplicationWithErrorCode(String message) {
+        System.out.println(message);
+        Platform.exit();
+        System.exit(1);
     }
 
     @FXML

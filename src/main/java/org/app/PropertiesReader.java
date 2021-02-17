@@ -7,9 +7,8 @@ import java.util.Properties;
 
 public final class PropertiesReader {
 
+    public static final String PROP_FILE = "apikey.properties";
     private static final Properties PROPERTIES;
-
-    private static final String PROP_FILE = "apikey.properties";
 
     static {
         PROPERTIES = new Properties();
