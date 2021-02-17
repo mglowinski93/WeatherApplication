@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class WeatherApiClient {
@@ -44,7 +44,7 @@ public class WeatherApiClient {
     }
 
     private Map<Integer, DailyForecastData> prepareWeatherData(JsonNode weaterJsonData, int forecastDays) {
-        Map<Integer, DailyForecastData> weatherTempForecast = new HashMap<>();
+        Map<Integer, DailyForecastData> weatherTempForecast = new LinkedHashMap<>();
 
         for (int i = 0; i < forecastDays; i++) {
             DailyForecastData dailyForecastData = new DailyForecastData(
