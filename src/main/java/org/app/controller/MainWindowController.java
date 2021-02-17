@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 import org.app.PropertiesReader;
 import org.app.controller.services.GetWeatherService;
 import org.app.model.DailyForecastData;
-import org.app.model.Date;
+import org.app.model.DateFormatter;
 import org.app.view.ViewFactory;
 
 import java.util.Map;
@@ -117,7 +117,6 @@ public class MainWindowController extends BaseController {
 
         weatherService.setOnSucceeded(event -> {
             Map<Integer, DailyForecastData> weatherTempForecast = weatherService.getValue();
-            Date date = new Date();
 
             int i = 0;
             for (Map.Entry<Integer, DailyForecastData> pair : weatherTempForecast.entrySet()) {
@@ -126,7 +125,7 @@ public class MainWindowController extends BaseController {
                 Label tempLabel = getTempLabel(dataVBox, i);
 
                 setImageView(imageView, pair.getValue().getIcon());
-                dateLabel.setText(date.getDateFromUTC(pair.getKey()));
+                dateLabel.setText(DateFormatter.getDateFromUTC(pair.getKey()));
                 tempLabel.setText(pair.getValue().getTemp() + " °C");
 
                 i++;
