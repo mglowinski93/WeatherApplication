@@ -107,7 +107,7 @@ public class MainWindowController extends BaseController {
                 tempLabel.setText(pair.getValue()[0] + " °C");
 
                 i++;
-            }si
+            }
         });
 
         weatherService.setOnFailed(event -> {
