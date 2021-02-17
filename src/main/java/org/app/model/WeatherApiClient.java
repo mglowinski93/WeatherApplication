@@ -19,7 +19,7 @@ public class WeatherApiClient {
         this.apiKey = apiKey;
     }
 
-    public Map<Integer, String[]> getWeatherTempForecast(String cityName, int forecastDays) throws IOException, InvalidForecastDays {
+    public Map<Integer, DailyForecastData> getWeatherTempForecast(String cityName, int forecastDays) throws IOException, InvalidForecastDays {
         if (minForecastDays < 0 || maxForecastDays > 7) {
             throw new InvalidForecastDays(forecastDays + " is invalid number for forecast days. Please select number " +
                     "between " + minForecastDays + " and " + maxForecastDays);
@@ -28,14 +28,6 @@ public class WeatherApiClient {
         JsonNode weaterJsonData = requestWeatherData(cityName);
 
         return prepareWeatherData(weaterJsonData, forecastDays);
-    }
-
-    public class InvalidForecastDays extends Exception {
-
-        public InvalidForecastDays(String message) {
-            super(message);
-        }
-
     }
 
     private JsonNode requestWeatherData(String cityName) throws IOException {
@@ -51,19 +43,27 @@ public class WeatherApiClient {
 
     }
 
-    private Map<Integer, String[]> prepareWeatherData(JsonNode weaterJsonData, int forecastDays) {
-        Map<Integer, String[]> weatherTempForecast = new HashMap<>();
+    private Map<Integer, DailyForecastData> prepareWeatherData(JsonNode weaterJsonData, int forecastDays) {
+        Map<Integer, DailyForecastData> weatherTempForecast = new HashMap<>();
 
         for (int i = 0; i < forecastDays; i++) {
-            String[] data = new String[]{
+            DailyForecastData dailyForecastData = new DailyForecastData(
                     weaterJsonData.get("daily").get(i).get("temp").get("day").asText(),
                     weaterJsonData.get("daily").get(i).get("weather").get(0).get("icon").asText()
-            };
+            );
 
-            weatherTempForecast.put(Integer.parseInt(weaterJsonData.get("daily").get(i).get("dt").asText()), data);
+            weatherTempForecast.put(Integer.parseInt(weaterJsonData.get("daily").get(i).get("dt").asText()), dailyForecastData);
         }
 
         return weatherTempForecast;
+    }
+
+    public class InvalidForecastDays extends Exception {
+
+        public InvalidForecastDays(String message) {
+            super(message);
+        }
+
     }
 
 }

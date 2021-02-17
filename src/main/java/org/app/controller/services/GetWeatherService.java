@@ -2,13 +2,14 @@ package org.app.controller.services;
 
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
+import org.app.model.DailyForecastData;
 import org.app.model.WeatherApiClient;
 
 import java.io.IOException;
 import java.util.Map;
 
 
-public class GetWeatherService extends Service<Map<Integer, String[]>> {
+public class GetWeatherService extends Service<Map<Integer, DailyForecastData>> {
 
     private final WeatherApiClient weatherApiClient;
     private final String apiKey;
@@ -36,17 +37,17 @@ public class GetWeatherService extends Service<Map<Integer, String[]>> {
         this.forecastDays = forecastDays;
     }
 
-    private Map<Integer, String[]> getWeatherData() throws IOException, WeatherApiClient.InvalidForecastDays {
+    private Map<Integer, DailyForecastData> getWeatherData() throws IOException, WeatherApiClient.InvalidForecastDays {
 
         return weatherApiClient.getWeatherTempForecast(cityName, forecastDays);
 
     }
 
     @Override
-    protected Task<Map<Integer, String[]>> createTask() {
+    protected Task<Map<Integer, DailyForecastData>> createTask() {
         return new Task<>() {
             @Override
-            protected Map<Integer, String[]> call() throws Exception {
+            protected Map<Integer, DailyForecastData> call() throws Exception {
                 return getWeatherData();
             }
         };
