@@ -37,15 +37,45 @@ public class MainWindowController extends BaseController {
         startGetWeatherService(destinationSearchField, destinationDataVBox);
     }
 
+    private HBox getHbox(VBox vBox, int hBoxNumber) {
+        return (HBox) vBox.getChildren().get(hBoxNumber);
+    }
+
+    private VBox getLabelVbox(HBox hBox) {
+        return (VBox) hBox.getChildren().get(1);
+    }
+
+    private Label getDataLabel(VBox vBox, int labelNumber) {
+        HBox dataHBox = getHbox(vBox, labelNumber);
+        VBox labelVBox = getLabelVbox(dataHBox);
+        return (Label) labelVBox.getChildren().get(0);
+    }
+
+    private Label getTempLabel(VBox vBox, int labelNumber) {
+        HBox dataHBox = getHbox(vBox, labelNumber);
+        VBox labelVBox = getLabelVbox(dataHBox);
+        return (Label) labelVBox.getChildren().get(1);
+    }
+
+    private ImageView getImageView(VBox vBox, int imageNumber) {
+        HBox dataHBox = getHbox(vBox, imageNumber);
+        return (ImageView) dataHBox.getChildren().get(0);
+    }
+
+    private void setImageView(ImageView imageView, String imageName) {
+        String imagePath = "images/" + imageName + ".png";
+        Image image = new Image(imagePath);
+        imageView.setImage(image);
+
+    }
+
     private void clearLabelsInsideVBox(VBox vBox) {
 
-        for (int i = 0; i < vBox.getChildren().size(); i++) {
+        for (int i = 0; i < weatherService.getForecastDays(); i++) {
 
-            HBox dataHBox = (HBox) vBox.getChildren().get(i);
-            ImageView imageView = (ImageView) dataHBox.getChildren().get(0);
-            VBox labelVBox = (VBox) dataHBox.getChildren().get(1);
-            Label dateLabel = (Label) labelVBox.getChildren().get(0);
-            Label tempLabel = (Label) labelVBox.getChildren().get(1);
+            ImageView imageView = getImageView(vBox, i);
+            Label dateLabel = getDataLabel(vBox, i);
+            Label tempLabel = getTempLabel(vBox, i);
 
             imageView.setImage(null);
             dateLabel.setText("");
@@ -68,28 +98,29 @@ public class MainWindowController extends BaseController {
 
             int i = 0;
             for (Map.Entry<Integer, String[]> pair : weatherTempForecast.entrySet()) {
-                HBox dataHBox = (HBox) dataVBox.getChildren().get(i);
-                ImageView imageView = (ImageView) dataHBox.getChildren().get(0);
+                ImageView imageView = getImageView(dataVBox, i);
+                Label dateLabel = getDataLabel(dataVBox, i);
+                Label tempLabel = getTempLabel(dataVBox, i);
 
-                VBox labelVBox = (VBox) dataHBox.getChildren().get(1);
-                Label dateLabel = (Label) labelVBox.getChildren().get(0);
-                Label tempLabel = (Label) labelVBox.getChildren().get(1);
-
-                String imagePath = "images/" + pair.getValue()[1] + ".png";
-                Image image = new Image(imagePath);
-                imageView.setImage(image);
-
-
+                setImageView(imageView, pair.getValue()[1]);
                 dateLabel.setText(date.getDateFromUTC(pair.getKey()));
                 tempLabel.setText(pair.getValue()[0] + " °C");
 
                 i++;
-            }
+            }si
         });
 
         weatherService.setOnFailed(event -> {
             clearLabelsInsideVBox(dataVBox);
             weatherService.getException().printStackTrace();
+
+
+            ImageView imageView = getImageView(dataVBox, 0);
+            Label dateLabel = getDataLabel(dataVBox, 0);
+
+            setImageView(imageView, "warning_mark");
+            dateLabel.setText("Failed to load data\nfor " + weatherService.getCityName());
+
         });
     }
 }
