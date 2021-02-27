@@ -20,7 +20,7 @@ public class WeatherApiClient {
     }
 
     public Map<Integer, DailyForecastData> getWeatherTempForecast(String cityName, int forecastDays) throws IOException, InvalidForecastDays {
-        if (minForecastDays < 0 || maxForecastDays > 7) {
+        if (forecastDays < minForecastDays || forecastDays > maxForecastDays) {
             throw new InvalidForecastDays(forecastDays + " is invalid number for forecast days. Please select number " +
                     "between " + minForecastDays + " and " + maxForecastDays);
         }
