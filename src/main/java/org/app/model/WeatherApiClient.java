@@ -30,7 +30,7 @@ public class WeatherApiClient {
         return prepareWeatherData(weaterJsonData, forecastDays);
     }
 
-    private JsonNode requestWeatherData(String cityName) throws IOException {
+    public JsonNode requestWeatherData(String cityName) throws IOException {
         JsonNode jsonData =
                 objectMapper.readTree(new URL("http://api.openweathermap.org/data/2.5/weather?q=" + cityName +
                         "&appid=" + apiKey + "&lang=en&units=metric"));
