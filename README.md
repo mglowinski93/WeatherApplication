@@ -11,6 +11,11 @@ Project to compare weather in two different cities
 
 Notice that Maven is required for upper steps.
 
+### Tests
+
+To run the tests it is enough to run bellow command:
+
+    mvn clean install test
 
 ### Open Weather Map API Key
 
