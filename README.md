@@ -1,6 +1,6 @@
 # Weather App
 
-Project to compare weather in two different cities
+Application to compare weather in two different cities.
 
 
 ![picture](Application_UI.png)
