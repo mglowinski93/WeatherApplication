@@ -1,4 +1,4 @@
-# Weather App
+# Weather application
 
 Application to compare weather in two different cities.
 
